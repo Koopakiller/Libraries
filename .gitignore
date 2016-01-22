@@ -1,0 +1,7 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/Koopakiller.Portable.UnitTests/obj/Debug
+/Koopakiller.Portable/obj/Debug
+/.vs
