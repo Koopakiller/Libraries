@@ -5,3 +5,6 @@
 /Koopakiller.Portable.UnitTests/obj/Debug
 /Koopakiller.Portable/obj/Debug
 /.vs
+/Koopakiller.Portable.UnitTests/bin/Debug
+/Koopakiller.Portable/bin/Debug
+*.user

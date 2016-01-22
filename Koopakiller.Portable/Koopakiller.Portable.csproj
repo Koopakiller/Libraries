@@ -8,7 +8,7 @@
     <ProjectGuid>{776372FA-EE5D-4AB9-AD69-5B3F690279EA}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Koopakiller.Portable</RootNamespace>
+    <RootNamespace>Koopakiller</RootNamespace>
     <AssemblyName>Koopakiller.Portable</AssemblyName>
     <DefaultLanguage>en-US</DefaultLanguage>
     <FileAlignment>512</FileAlignment>
@@ -44,6 +44,7 @@
     <Compile Include="Coding\Morse\MorseSignal.cs" />
     <Compile Include="Coding\Morse\MorseSpace.cs" />
     <Compile Include="Coding\Morse\MorseWord.cs" />
+    <Compile Include="Linq\GetHashCode.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
