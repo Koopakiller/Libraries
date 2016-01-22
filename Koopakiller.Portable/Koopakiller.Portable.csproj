@@ -39,6 +39,11 @@
     <!-- A reference to the entire .NET Framework is automatically included -->
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Coding\Morse\MorseCharacter.cs" />
+    <Compile Include="Coding\Morse\MorseCode.cs" />
+    <Compile Include="Coding\Morse\MorseSignal.cs" />
+    <Compile Include="Coding\Morse\MorseSpace.cs" />
+    <Compile Include="Coding\Morse\MorseWord.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />

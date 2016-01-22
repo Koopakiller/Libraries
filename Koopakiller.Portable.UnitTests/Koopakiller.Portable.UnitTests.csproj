@@ -51,7 +51,15 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="Coding\Morse\MorseCharacterTests.cs" />
+    <Compile Include="Coding\Morse\MorseWordTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Koopakiller.Portable\Koopakiller.Portable.csproj">
+      <Project>{776372fa-ee5d-4ab9-ad69-5b3f690279ea}</Project>
+      <Name>Koopakiller.Portable</Name>
+    </ProjectReference>
   </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
