@@ -2,7 +2,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using Koopakiller.Portable.Coding.Morse;
+using Koopakiller.Coding.Morse;
+using Koopakiller.Linq;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 // ReSharper disable ObjectCreationAsStatement
@@ -18,9 +19,9 @@ namespace Koopakiller.Portable.UnitTests.Coding.Morse
         [TestMethod]
         public void Constructor()
         {
-            var signals = new[] { MorseCharacter.A, MorseCharacter.M, MorseCharacter.Y, MorseCharacter.Number5 };
-            var mw = new MorseWord(signals);
-            Assert.IsTrue(mw.Characters.SequenceEqual(signals));
+            var chars = new[] { MorseCharacter.A, MorseCharacter.M, MorseCharacter.Y, MorseCharacter.Number5 };
+            var mw = new MorseWord(chars);
+            Assert.IsTrue(mw.Characters.SequenceEqual(chars));
         }
 
         [TestMethod]
@@ -190,6 +191,36 @@ namespace Koopakiller.Portable.UnitTests.Coding.Morse
         {
             var mw = MorseWord.Parse("");
             Assert.AreEqual(new MorseWord(), mw);
+        }
+
+        #endregion
+
+        #region GetHashCode / Equals
+
+        [TestMethod]
+        public void GetHashCodeTest()
+        {
+            var chars = new[] { MorseCharacter.A, MorseCharacter.M, MorseCharacter.Y, MorseCharacter.Number5 };
+            var mw = new MorseWord(chars);
+            Assert.AreEqual(chars.GetSequenceHashCode(), mw.GetHashCode());
+        }
+
+        [TestMethod]
+        public void EqualsTestNullParameter()
+        {
+            var chars = new[] { MorseCharacter.A, MorseCharacter.M, MorseCharacter.Y, MorseCharacter.Number5 };
+            var mw1 = new MorseWord(chars);
+            var mw2 = new MorseWord(chars);
+            Assert.IsTrue(mw1.Equals(mw2));
+            Assert.IsTrue(mw2.Equals(mw1));
+        }
+
+        [TestMethod]
+        public void EqualsTest()
+        {
+            var chars = new[] { MorseCharacter.A, MorseCharacter.M, MorseCharacter.Y, MorseCharacter.Number5 };
+            var mw = new MorseWord(chars);
+            Assert.IsFalse(mw.Equals(null));
         }
 
         #endregion

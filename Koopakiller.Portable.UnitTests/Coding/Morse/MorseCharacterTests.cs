@@ -2,7 +2,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using Koopakiller.Portable.Coding.Morse;
+using Koopakiller.Coding.Morse;
+using Koopakiller.Linq;
+using Koopakiller.Portable.UnitTests.Helper;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 // ReSharper disable ObjectCreationAsStatement
@@ -89,7 +91,7 @@ namespace Koopakiller.Portable.UnitTests.Coding.Morse
             var mc = MorseCharacter.C;
             Assert.AreEqual("−·−· (C)", mc.ToString("d"));
         }
-        
+
         [TestMethod]
         public void ToString_cFormat()
         {
@@ -268,6 +270,36 @@ namespace Koopakiller.Portable.UnitTests.Coding.Morse
             Assert.IsTrue(MorseCharacter.Number8.Signals.SequenceEqual(new[] { MorseSignal.Dah, MorseSignal.Dah, MorseSignal.Dah, MorseSignal.Dit, MorseSignal.Dit, }));
             Assert.IsTrue(MorseCharacter.Number9.Signals.SequenceEqual(new[] { MorseSignal.Dah, MorseSignal.Dah, MorseSignal.Dah, MorseSignal.Dah, MorseSignal.Dit, }));
             Assert.IsTrue(MorseCharacter.Number0.Signals.SequenceEqual(new[] { MorseSignal.Dah, MorseSignal.Dah, MorseSignal.Dah, MorseSignal.Dah, MorseSignal.Dah, }));
+        }
+
+        #endregion
+
+        #region GetHashCode / Equals
+
+        [TestMethod]
+        public void GetHashCodeTest()
+        {
+            var signals = new[] { MorseSignal.Dah, MorseSignal.Dit, MorseSignal.Dah, MorseSignal.Dit };
+            var mc = new MorseCharacter(signals);
+            Assert.AreEqual(signals.GetSequenceHashCode(), mc.GetHashCode());
+        }
+
+        [TestMethod]
+        public void EqualsTestNullParameter()
+        {
+            var signals = new[] { MorseSignal.Dah, MorseSignal.Dit, MorseSignal.Dah, MorseSignal.Dit };
+            var mc1 = new MorseCharacter(signals);
+            var mc2 = new MorseCharacter(signals);
+            Assert.IsTrue(mc1.Equals(mc2));
+            Assert.IsTrue(mc2.Equals(mc1));
+        }
+
+        [TestMethod]
+        public void EqualsTest()
+        {
+            var signals = new[] { MorseSignal.Dah, MorseSignal.Dit, MorseSignal.Dah, MorseSignal.Dit };
+            var mc = new MorseCharacter(signals);
+            Assert.IsFalse(mc.Equals(null));
         }
 
         #endregion

@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 
-namespace Koopakiller.Portable.Coding.Morse
+namespace Koopakiller.Coding.Morse
 {
     public class MorseCode : IFormattable, IEnumerable<MorseWord>, IEnumerable<string>
     {

@@ -3,8 +3,9 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
+using Koopakiller.Linq;
 
-namespace Koopakiller.Portable.Coding.Morse
+namespace Koopakiller.Coding.Morse
 {
     public class MorseWord : IFormattable, IEnumerable<MorseCharacter>, IEnumerable<char>
     {
@@ -86,6 +87,16 @@ namespace Koopakiller.Portable.Coding.Morse
             }
             return string.Join(characterSeparator, this.Characters.Select(x => x.ToString(dit, dah)));
         }
-        
+
+        public override int GetHashCode()
+        {
+            return this.Characters.GetSequenceHashCode();
+        }
+
+        public override bool Equals(object obj)
+        {
+            var mc = obj as MorseWord;
+            return mc != null && mc.Characters.SequenceEqual(this.Characters);
+        }
     }
 }

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Koopakiller.Linq;
+using Koopakiller.Portable.UnitTests.Helper;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace Koopakiller.Portable.UnitTests.Linq
@@ -14,9 +15,9 @@ namespace Koopakiller.Portable.UnitTests.Linq
         [TestMethod]
         public void GetSequenceHashCode()
         {
-            var list = GetSequenceHashCodeExtensionTests.GetSourceArray();
+            var list = GetSequenceHashCodeHelper.GetSourceArray();
             var hash = list.GetSequenceHashCode();
-            Assert.AreEqual(GetSequenceHashCodeExtensionTests.GetSourceArrayHashCode(), hash);
+            Assert.AreEqual(GetSequenceHashCodeHelper.GetSourceArrayHashCode(), hash);
         }
 
         [TestMethod]
@@ -35,23 +36,5 @@ namespace Koopakiller.Portable.UnitTests.Linq
             // ReSharper disable once ExpressionIsAlwaysNull
             var hash = list.GetSequenceHashCode();
         }
-
-        #region Helper
-
-        private static int GetSourceArrayHashCode()
-        {
-            unchecked
-            {
-                return (((19 * 31 + 1) * 31 + 1024) * 31 + 1024 * 1024) * 31 + 1024 * 1024 * 1024;
-            }
-        }
-
-        // ReSharper disable once ReturnTypeCanBeEnumerable.Local
-        private static int[] GetSourceArray()
-        {
-            return new[] { 1, 1024, 1024 * 1024, 1024 * 1024 * 1024 };
-        }
-
-        #endregion
     }
 }

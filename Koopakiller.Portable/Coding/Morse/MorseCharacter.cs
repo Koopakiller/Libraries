@@ -3,8 +3,9 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
+using Koopakiller.Linq;
 
-namespace Koopakiller.Portable.Coding.Morse
+namespace Koopakiller.Coding.Morse
 {
     public class MorseCharacter : IFormattable, IEnumerable<MorseSignal>
     {
@@ -165,7 +166,7 @@ namespace Koopakiller.Portable.Coding.Morse
 
         public override int GetHashCode()
         {
-            return base.GetHashCode();
+            return this.Signals.GetSequenceHashCode();
         }
 
         public override bool Equals(object obj)

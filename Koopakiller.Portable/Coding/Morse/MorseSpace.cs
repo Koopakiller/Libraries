@@ -1,4 +1,4 @@
-namespace Koopakiller.Portable.Coding.Morse
+namespace Koopakiller.Coding.Morse
 {
     public enum MorseSpace
     {
