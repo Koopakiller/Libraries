@@ -303,5 +303,17 @@ namespace Koopakiller.Portable.UnitTests.Coding.Morse
         }
 
         #endregion
+
+        #region DebuggerDisplay
+
+        [TestMethod]
+        public void DebuggerDisplay()
+        {
+            var mc = new MorseCharacter(MorseSignal.Dah, MorseSignal.Dit, MorseSignal.Dah, MorseSignal.Dit);
+            var po = new PrivateObject(mc);
+            Assert.AreEqual(mc.ToString("d"), po.GetProperty("DebuggerDisplay"));
+        }
+
+        #endregion
     }
 }

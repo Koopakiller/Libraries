@@ -182,8 +182,7 @@ namespace Koopakiller.Portable.UnitTests.Coding.Morse
         [ExpectedException(typeof(ArgumentNullException))]
         public void Parse_Null()
         {
-            var mw = MorseWord.Parse(null);
-            Assert.AreEqual(new MorseWord(MorseCharacter.A, MorseCharacter.M, MorseCharacter.Y, MorseCharacter.Number5), mw);
+            MorseWord.Parse(null);
         }
 
         [TestMethod]
@@ -221,6 +220,18 @@ namespace Koopakiller.Portable.UnitTests.Coding.Morse
             var chars = new[] { MorseCharacter.A, MorseCharacter.M, MorseCharacter.Y, MorseCharacter.Number5 };
             var mw = new MorseWord(chars);
             Assert.IsFalse(mw.Equals(null));
+        }
+
+        #endregion
+
+        #region DebuggerDisplay
+
+        [TestMethod]
+        public void DebuggerDisplay()
+        {
+            var mw = new MorseWord(MorseCharacter.A, MorseCharacter.M, MorseCharacter.Y, MorseCharacter.Number5);
+            var po = new PrivateObject(mw);
+            Assert.AreEqual(mw.ToString("d"), po.GetProperty("DebuggerDisplay"));
         }
 
         #endregion

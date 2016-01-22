@@ -1,12 +1,14 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Globalization;
 using System.Linq;
 using Koopakiller.Linq;
 
 namespace Koopakiller.Coding.Morse
 {
+    [DebuggerDisplay(@"{DebuggerDisplay}")]
     public class MorseWord : IFormattable, IEnumerable<MorseCharacter>, IEnumerable<char>
     {
         public IReadOnlyList<MorseCharacter> Characters { get; }
@@ -98,5 +100,8 @@ namespace Koopakiller.Coding.Morse
             var mc = obj as MorseWord;
             return mc != null && mc.Characters.SequenceEqual(this.Characters);
         }
+
+        // ReSharper disable once UnusedMember.Local
+        private string DebuggerDisplay => this.ToString("d");
     }
 }
