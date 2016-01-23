@@ -9,3 +9,6 @@
 /Koopakiller.Portable/bin/Debug
 *.user
 /Koopakiller.ClassicDesktop/obj/Debug
+/Koopakiller.ClassicDesktop.UnitTests/obj/Debug
+/Koopakiller.ClassicDesktop.UnitTests/bin/Debug
+/Koopakiller.ClassicDesktop/bin/Debug
