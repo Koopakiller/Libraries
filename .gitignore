@@ -8,3 +8,4 @@
 /Koopakiller.Portable.UnitTests/bin/Debug
 /Koopakiller.Portable/bin/Debug
 *.user
+/Koopakiller.ClassicDesktop/obj/Debug
