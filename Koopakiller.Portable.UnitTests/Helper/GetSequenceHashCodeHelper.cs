@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Koopakiller.Portable.UnitTests.Helper
 {
-    internal class GetSequenceHashCodeHelper
+    internal static class GetSequenceHashCodeHelper
     {
         public static int GetSourceArrayHashCode()
         {

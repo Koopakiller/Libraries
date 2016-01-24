@@ -39,7 +39,7 @@ namespace Koopakiller.Portable.UnitTests.Coding.Morse
         public void IEnumerable_GetEnumerator()
         {
             var chars = new[] { MorseCharacter.A, MorseCharacter.M, MorseCharacter.Y, MorseCharacter.Number5 };
-            IEnumerable mw = new MorseWord(chars);
+            var mw = new MorseWord(chars) as IEnumerable;
             Assert.IsTrue(mw.OfType<MorseCharacter>().SequenceEqual(chars));
         }
 
@@ -47,7 +47,7 @@ namespace Koopakiller.Portable.UnitTests.Coding.Morse
         public void IEnumerable_MorseCharacter_GetEnumerator()
         {
             var chars = new[] { MorseCharacter.A, MorseCharacter.M, MorseCharacter.Y, MorseCharacter.Number5 };
-            IEnumerable<MorseCharacter> mw = new MorseWord(chars);
+            var mw = new MorseWord(chars) as IEnumerable<MorseCharacter>;
             Assert.IsTrue(mw.SequenceEqual(chars));
         }
 
@@ -55,7 +55,7 @@ namespace Koopakiller.Portable.UnitTests.Coding.Morse
         public void IEnumerable_Char_GetEnumerator()
         {
             var chars = new[] { MorseCharacter.A, MorseCharacter.M, MorseCharacter.Y, MorseCharacter.Number5 };
-            IEnumerable<char> mw = new MorseWord(chars);
+            var mw = new MorseWord(chars) as IEnumerable<char>;
             Assert.IsTrue(mw.SequenceEqual(new[] { 'A', 'M', 'Y', '5' }));
         }
 

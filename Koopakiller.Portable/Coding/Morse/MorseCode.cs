@@ -11,7 +11,7 @@ namespace Koopakiller.Coding.Morse
     [DebuggerDisplay(@"{DebuggerDisplay}")]
     public class MorseCode : IFormattable, IEnumerable<MorseWord>, IEnumerable<string>
     {
-        public IReadOnlyList<MorseWord> Words { get; }
+        #region .ctor
 
         public MorseCode(params MorseWord[] words)
         {
@@ -21,6 +21,16 @@ namespace Koopakiller.Coding.Morse
             }
             this.Words = words;
         }
+
+        #endregion
+
+        #region Properties
+
+        public IReadOnlyList<MorseWord> Words { get; }
+
+        #endregion
+
+        #region Public Methods
 
         public static MorseCode Parse(string word)
         {
@@ -41,7 +51,6 @@ namespace Koopakiller.Coding.Morse
                 throw new ArgumentException($"Parameter {nameof(word)} conatins at least one illegal character.", nameof(word), ex);
             }
         }
-
 
         public override string ToString() => this.ToString("");
 
@@ -88,16 +97,6 @@ namespace Koopakiller.Coding.Morse
             return string.Join(wordSeparator, this.Words.Select(x => x.ToString(dit, dah, characterSeparator)));
         }
 
-        #region IEnumerable
-
-        public IEnumerator<MorseWord> GetEnumerator() => this.Words.GetEnumerator();
-
-        IEnumerator<string> IEnumerable<string>.GetEnumerator() => this.Words.Select(x => x.ToString("c")).GetEnumerator();
-
-        IEnumerator IEnumerable.GetEnumerator() => this.GetEnumerator();
-
-        #endregion
-
         public override int GetHashCode()
         {
             return this.Words.GetSequenceHashCode();
@@ -109,7 +108,23 @@ namespace Koopakiller.Coding.Morse
             return mc != null && mc.Words.SequenceEqual(this.Words);
         }
 
+        #endregion
+
+        #region IEnumerable
+
+        public IEnumerator<MorseWord> GetEnumerator() => this.Words.GetEnumerator();
+
+        IEnumerator<string> IEnumerable<string>.GetEnumerator() => this.Words.Select(x => x.ToString("c")).GetEnumerator();
+
+        IEnumerator IEnumerable.GetEnumerator() => this.GetEnumerator();
+
+        #endregion
+
+        #region For Debugging
+
         // ReSharper disable once UnusedMember.Local
         private string DebuggerDisplay => this.ToString("d");
+
+        #endregion
     }
 }

@@ -48,7 +48,7 @@ namespace Koopakiller.Portable.UnitTests.Coding.Morse
         public void IEnumerable_GetEnumerator()
         {
             var signals = new[] { MorseSignal.Dah, MorseSignal.Dit, MorseSignal.Dah, MorseSignal.Dit };
-            IEnumerable mc = new MorseCharacter(signals);
+            var mc = new MorseCharacter(signals)as IEnumerable;
             Assert.IsTrue(mc.OfType<MorseSignal>().SequenceEqual(signals));
         }
 
@@ -56,7 +56,7 @@ namespace Koopakiller.Portable.UnitTests.Coding.Morse
         public void IEnumerable_MorseSignal_GetEnumerator()
         {
             var signals = new[] { MorseSignal.Dah, MorseSignal.Dit, MorseSignal.Dah, MorseSignal.Dit };
-            IEnumerable<MorseSignal> mc = new MorseCharacter(signals);
+         var mc = new MorseCharacter(signals) as IEnumerable<MorseSignal>;
             Assert.IsTrue(mc.SequenceEqual(signals));
         }
 
@@ -229,47 +229,47 @@ namespace Koopakiller.Portable.UnitTests.Coding.Morse
         [TestMethod]
         public void StaticCharacterProperties_Characters()
         {
-            Assert.IsTrue(MorseCharacter.A.Signals.SequenceEqual(new[] { MorseSignal.Dit, MorseSignal.Dah, }));
-            Assert.IsTrue(MorseCharacter.B.Signals.SequenceEqual(new[] { MorseSignal.Dah, MorseSignal.Dit, MorseSignal.Dit, MorseSignal.Dit, }));
-            Assert.IsTrue(MorseCharacter.C.Signals.SequenceEqual(new[] { MorseSignal.Dah, MorseSignal.Dit, MorseSignal.Dah, MorseSignal.Dit, }));
-            Assert.IsTrue(MorseCharacter.D.Signals.SequenceEqual(new[] { MorseSignal.Dah, MorseSignal.Dit, MorseSignal.Dit, }));
-            Assert.IsTrue(MorseCharacter.E.Signals.SequenceEqual(new[] { MorseSignal.Dit, }));
-            Assert.IsTrue(MorseCharacter.F.Signals.SequenceEqual(new[] { MorseSignal.Dit, MorseSignal.Dit, MorseSignal.Dah, MorseSignal.Dit, }));
-            Assert.IsTrue(MorseCharacter.G.Signals.SequenceEqual(new[] { MorseSignal.Dah, MorseSignal.Dah, MorseSignal.Dit, }));
-            Assert.IsTrue(MorseCharacter.H.Signals.SequenceEqual(new[] { MorseSignal.Dit, MorseSignal.Dit, MorseSignal.Dit, MorseSignal.Dit, }));
-            Assert.IsTrue(MorseCharacter.I.Signals.SequenceEqual(new[] { MorseSignal.Dit, MorseSignal.Dit, }));
-            Assert.IsTrue(MorseCharacter.J.Signals.SequenceEqual(new[] { MorseSignal.Dit, MorseSignal.Dah, MorseSignal.Dah, MorseSignal.Dah, }));
-            Assert.IsTrue(MorseCharacter.K.Signals.SequenceEqual(new[] { MorseSignal.Dah, MorseSignal.Dit, MorseSignal.Dah, }));
-            Assert.IsTrue(MorseCharacter.L.Signals.SequenceEqual(new[] { MorseSignal.Dit, MorseSignal.Dah, MorseSignal.Dit, MorseSignal.Dit, }));
-            Assert.IsTrue(MorseCharacter.M.Signals.SequenceEqual(new[] { MorseSignal.Dah, MorseSignal.Dah, }));
-            Assert.IsTrue(MorseCharacter.N.Signals.SequenceEqual(new[] { MorseSignal.Dah, MorseSignal.Dit, }));
-            Assert.IsTrue(MorseCharacter.O.Signals.SequenceEqual(new[] { MorseSignal.Dah, MorseSignal.Dah, MorseSignal.Dah, }));
-            Assert.IsTrue(MorseCharacter.P.Signals.SequenceEqual(new[] { MorseSignal.Dit, MorseSignal.Dah, MorseSignal.Dah, MorseSignal.Dit, }));
-            Assert.IsTrue(MorseCharacter.Q.Signals.SequenceEqual(new[] { MorseSignal.Dah, MorseSignal.Dah, MorseSignal.Dit, MorseSignal.Dah, }));
-            Assert.IsTrue(MorseCharacter.R.Signals.SequenceEqual(new[] { MorseSignal.Dit, MorseSignal.Dah, MorseSignal.Dit, }));
-            Assert.IsTrue(MorseCharacter.S.Signals.SequenceEqual(new[] { MorseSignal.Dit, MorseSignal.Dit, MorseSignal.Dit, }));
-            Assert.IsTrue(MorseCharacter.T.Signals.SequenceEqual(new[] { MorseSignal.Dah, }));
-            Assert.IsTrue(MorseCharacter.U.Signals.SequenceEqual(new[] { MorseSignal.Dit, MorseSignal.Dit, MorseSignal.Dah, }));
-            Assert.IsTrue(MorseCharacter.V.Signals.SequenceEqual(new[] { MorseSignal.Dit, MorseSignal.Dit, MorseSignal.Dit, MorseSignal.Dah, }));
-            Assert.IsTrue(MorseCharacter.W.Signals.SequenceEqual(new[] { MorseSignal.Dit, MorseSignal.Dah, MorseSignal.Dah, }));
-            Assert.IsTrue(MorseCharacter.X.Signals.SequenceEqual(new[] { MorseSignal.Dah, MorseSignal.Dit, MorseSignal.Dit, MorseSignal.Dah, }));
-            Assert.IsTrue(MorseCharacter.Y.Signals.SequenceEqual(new[] { MorseSignal.Dah, MorseSignal.Dit, MorseSignal.Dah, MorseSignal.Dah, }));
-            Assert.IsTrue(MorseCharacter.Z.Signals.SequenceEqual(new[] { MorseSignal.Dah, MorseSignal.Dah, MorseSignal.Dit, MorseSignal.Dit, }));
+            Assert.IsTrue(MorseCharacter.A.Signals.SequenceEqual(new[] { MorseSignal.Dit, MorseSignal.Dah }));
+            Assert.IsTrue(MorseCharacter.B.Signals.SequenceEqual(new[] { MorseSignal.Dah, MorseSignal.Dit, MorseSignal.Dit, MorseSignal.Dit }));
+            Assert.IsTrue(MorseCharacter.C.Signals.SequenceEqual(new[] { MorseSignal.Dah, MorseSignal.Dit, MorseSignal.Dah, MorseSignal.Dit }));
+            Assert.IsTrue(MorseCharacter.D.Signals.SequenceEqual(new[] { MorseSignal.Dah, MorseSignal.Dit, MorseSignal.Dit }));
+            Assert.IsTrue(MorseCharacter.E.Signals.SequenceEqual(new[] { MorseSignal.Dit }));
+            Assert.IsTrue(MorseCharacter.F.Signals.SequenceEqual(new[] { MorseSignal.Dit, MorseSignal.Dit, MorseSignal.Dah, MorseSignal.Dit }));
+            Assert.IsTrue(MorseCharacter.G.Signals.SequenceEqual(new[] { MorseSignal.Dah, MorseSignal.Dah, MorseSignal.Dit }));
+            Assert.IsTrue(MorseCharacter.H.Signals.SequenceEqual(new[] { MorseSignal.Dit, MorseSignal.Dit, MorseSignal.Dit, MorseSignal.Dit }));
+            Assert.IsTrue(MorseCharacter.I.Signals.SequenceEqual(new[] { MorseSignal.Dit, MorseSignal.Dit }));
+            Assert.IsTrue(MorseCharacter.J.Signals.SequenceEqual(new[] { MorseSignal.Dit, MorseSignal.Dah, MorseSignal.Dah, MorseSignal.Dah }));
+            Assert.IsTrue(MorseCharacter.K.Signals.SequenceEqual(new[] { MorseSignal.Dah, MorseSignal.Dit, MorseSignal.Dah }));
+            Assert.IsTrue(MorseCharacter.L.Signals.SequenceEqual(new[] { MorseSignal.Dit, MorseSignal.Dah, MorseSignal.Dit, MorseSignal.Dit }));
+            Assert.IsTrue(MorseCharacter.M.Signals.SequenceEqual(new[] { MorseSignal.Dah, MorseSignal.Dah }));
+            Assert.IsTrue(MorseCharacter.N.Signals.SequenceEqual(new[] { MorseSignal.Dah, MorseSignal.Dit }));
+            Assert.IsTrue(MorseCharacter.O.Signals.SequenceEqual(new[] { MorseSignal.Dah, MorseSignal.Dah, MorseSignal.Dah }));
+            Assert.IsTrue(MorseCharacter.P.Signals.SequenceEqual(new[] { MorseSignal.Dit, MorseSignal.Dah, MorseSignal.Dah, MorseSignal.Dit }));
+            Assert.IsTrue(MorseCharacter.Q.Signals.SequenceEqual(new[] { MorseSignal.Dah, MorseSignal.Dah, MorseSignal.Dit, MorseSignal.Dah }));
+            Assert.IsTrue(MorseCharacter.R.Signals.SequenceEqual(new[] { MorseSignal.Dit, MorseSignal.Dah, MorseSignal.Dit }));
+            Assert.IsTrue(MorseCharacter.S.Signals.SequenceEqual(new[] { MorseSignal.Dit, MorseSignal.Dit, MorseSignal.Dit }));
+            Assert.IsTrue(MorseCharacter.T.Signals.SequenceEqual(new[] { MorseSignal.Dah }));
+            Assert.IsTrue(MorseCharacter.U.Signals.SequenceEqual(new[] { MorseSignal.Dit, MorseSignal.Dit, MorseSignal.Dah }));
+            Assert.IsTrue(MorseCharacter.V.Signals.SequenceEqual(new[] { MorseSignal.Dit, MorseSignal.Dit, MorseSignal.Dit, MorseSignal.Dah }));
+            Assert.IsTrue(MorseCharacter.W.Signals.SequenceEqual(new[] { MorseSignal.Dit, MorseSignal.Dah, MorseSignal.Dah }));
+            Assert.IsTrue(MorseCharacter.X.Signals.SequenceEqual(new[] { MorseSignal.Dah, MorseSignal.Dit, MorseSignal.Dit, MorseSignal.Dah }));
+            Assert.IsTrue(MorseCharacter.Y.Signals.SequenceEqual(new[] { MorseSignal.Dah, MorseSignal.Dit, MorseSignal.Dah, MorseSignal.Dah }));
+            Assert.IsTrue(MorseCharacter.Z.Signals.SequenceEqual(new[] { MorseSignal.Dah, MorseSignal.Dah, MorseSignal.Dit, MorseSignal.Dit }));
         }
 
         [TestMethod]
         public void StaticCharacterProperties_Digits()
         {
-            Assert.IsTrue(MorseCharacter.Number1.Signals.SequenceEqual(new[] { MorseSignal.Dit, MorseSignal.Dah, MorseSignal.Dah, MorseSignal.Dah, MorseSignal.Dah, }));
-            Assert.IsTrue(MorseCharacter.Number2.Signals.SequenceEqual(new[] { MorseSignal.Dit, MorseSignal.Dit, MorseSignal.Dah, MorseSignal.Dah, MorseSignal.Dah, }));
-            Assert.IsTrue(MorseCharacter.Number3.Signals.SequenceEqual(new[] { MorseSignal.Dit, MorseSignal.Dit, MorseSignal.Dit, MorseSignal.Dah, MorseSignal.Dah, }));
-            Assert.IsTrue(MorseCharacter.Number4.Signals.SequenceEqual(new[] { MorseSignal.Dit, MorseSignal.Dit, MorseSignal.Dit, MorseSignal.Dit, MorseSignal.Dah, }));
-            Assert.IsTrue(MorseCharacter.Number5.Signals.SequenceEqual(new[] { MorseSignal.Dit, MorseSignal.Dit, MorseSignal.Dit, MorseSignal.Dit, MorseSignal.Dit, }));
-            Assert.IsTrue(MorseCharacter.Number6.Signals.SequenceEqual(new[] { MorseSignal.Dah, MorseSignal.Dit, MorseSignal.Dit, MorseSignal.Dit, MorseSignal.Dit, }));
-            Assert.IsTrue(MorseCharacter.Number7.Signals.SequenceEqual(new[] { MorseSignal.Dah, MorseSignal.Dah, MorseSignal.Dit, MorseSignal.Dit, MorseSignal.Dit, }));
-            Assert.IsTrue(MorseCharacter.Number8.Signals.SequenceEqual(new[] { MorseSignal.Dah, MorseSignal.Dah, MorseSignal.Dah, MorseSignal.Dit, MorseSignal.Dit, }));
-            Assert.IsTrue(MorseCharacter.Number9.Signals.SequenceEqual(new[] { MorseSignal.Dah, MorseSignal.Dah, MorseSignal.Dah, MorseSignal.Dah, MorseSignal.Dit, }));
-            Assert.IsTrue(MorseCharacter.Number0.Signals.SequenceEqual(new[] { MorseSignal.Dah, MorseSignal.Dah, MorseSignal.Dah, MorseSignal.Dah, MorseSignal.Dah, }));
+            Assert.IsTrue(MorseCharacter.Number1.Signals.SequenceEqual(new[] { MorseSignal.Dit, MorseSignal.Dah, MorseSignal.Dah, MorseSignal.Dah, MorseSignal.Dah }));
+            Assert.IsTrue(MorseCharacter.Number2.Signals.SequenceEqual(new[] { MorseSignal.Dit, MorseSignal.Dit, MorseSignal.Dah, MorseSignal.Dah, MorseSignal.Dah }));
+            Assert.IsTrue(MorseCharacter.Number3.Signals.SequenceEqual(new[] { MorseSignal.Dit, MorseSignal.Dit, MorseSignal.Dit, MorseSignal.Dah, MorseSignal.Dah }));
+            Assert.IsTrue(MorseCharacter.Number4.Signals.SequenceEqual(new[] { MorseSignal.Dit, MorseSignal.Dit, MorseSignal.Dit, MorseSignal.Dit, MorseSignal.Dah }));
+            Assert.IsTrue(MorseCharacter.Number5.Signals.SequenceEqual(new[] { MorseSignal.Dit, MorseSignal.Dit, MorseSignal.Dit, MorseSignal.Dit, MorseSignal.Dit }));
+            Assert.IsTrue(MorseCharacter.Number6.Signals.SequenceEqual(new[] { MorseSignal.Dah, MorseSignal.Dit, MorseSignal.Dit, MorseSignal.Dit, MorseSignal.Dit }));
+            Assert.IsTrue(MorseCharacter.Number7.Signals.SequenceEqual(new[] { MorseSignal.Dah, MorseSignal.Dah, MorseSignal.Dit, MorseSignal.Dit, MorseSignal.Dit }));
+            Assert.IsTrue(MorseCharacter.Number8.Signals.SequenceEqual(new[] { MorseSignal.Dah, MorseSignal.Dah, MorseSignal.Dah, MorseSignal.Dit, MorseSignal.Dit }));
+            Assert.IsTrue(MorseCharacter.Number9.Signals.SequenceEqual(new[] { MorseSignal.Dah, MorseSignal.Dah, MorseSignal.Dah, MorseSignal.Dah, MorseSignal.Dit }));
+            Assert.IsTrue(MorseCharacter.Number0.Signals.SequenceEqual(new[] { MorseSignal.Dah, MorseSignal.Dah, MorseSignal.Dah, MorseSignal.Dah, MorseSignal.Dah }));
         }
 
         #endregion

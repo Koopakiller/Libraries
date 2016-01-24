@@ -51,7 +51,7 @@ namespace Koopakiller.Portable.UnitTests.Coding.Morse
         public void IEnumerable_GetEnumerator()
         {
             var words = this.GetSampleSentence();
-            IEnumerable mw = new MorseCode(words);
+            var mw = new MorseCode(words)as IEnumerable;
             Assert.IsTrue(mw.OfType<MorseWord>().SequenceEqual(words));
         }
 
@@ -59,7 +59,7 @@ namespace Koopakiller.Portable.UnitTests.Coding.Morse
         public void IEnumerable_MorseWord_GetEnumerator()
         {
             var words = this.GetSampleSentence();
-            IEnumerable<MorseWord> mw = new MorseCode(words);
+            var mw = new MorseCode(words)as IEnumerable<MorseWord>;
             Assert.IsTrue(mw.SequenceEqual(words));
         }
 
@@ -67,7 +67,7 @@ namespace Koopakiller.Portable.UnitTests.Coding.Morse
         public void IEnumerable_String_GetEnumerator()
         {
             var words = this.GetSampleSentence();
-            IEnumerable<string> mw = new MorseCode(words);
+            var mw = new MorseCode(words)as IEnumerable<string>;
             Assert.IsTrue(mw.SequenceEqual(new[] { "ABCD", "WXYZ", "258" }));
         }
 

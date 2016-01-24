@@ -11,7 +11,7 @@ namespace Koopakiller.Coding.Morse
     [DebuggerDisplay(@"{DebuggerDisplay}")]
     public class MorseCharacter : IFormattable, IEnumerable<MorseSignal>
     {
-        public IReadOnlyList<MorseSignal> Signals { get; }
+        #region .ctor
 
         public MorseCharacter(params MorseSignal[] signals)
         {
@@ -26,6 +26,12 @@ namespace Koopakiller.Coding.Morse
             this.Signals = signals;
         }
 
+        #endregion
+
+        #region Properties
+
+        public IReadOnlyList<MorseSignal> Signals { get; }
+
         public static MorseCharacter FromChar(char chr)
         {
             chr = char.ToUpper(chr);
@@ -37,12 +43,16 @@ namespace Koopakiller.Coding.Morse
             return mc.Value;
         }
 
+        #endregion
+
         #region IEnumerable
 
         public IEnumerator<MorseSignal> GetEnumerator() => this.Signals.GetEnumerator();
         IEnumerator IEnumerable.GetEnumerator() => this.GetEnumerator();
 
         #endregion
+
+        #region Public Methods
 
         public override string ToString() => this.ToString("");
 
@@ -82,6 +92,19 @@ namespace Koopakiller.Coding.Morse
             }
             return chr.Key;
         }
+
+        public override int GetHashCode()
+        {
+            return this.Signals.GetSequenceHashCode();
+        }
+
+        public override bool Equals(object obj)
+        {
+            var mc = obj as MorseCharacter;
+            return mc != null && mc.Signals.SequenceEqual(this.Signals);
+        }
+
+        #endregion
 
         #region Static Properties
 
@@ -161,23 +184,16 @@ namespace Koopakiller.Coding.Morse
             ['7'] = MorseCharacter.Number7,
             ['8'] = MorseCharacter.Number8,
             ['9'] = MorseCharacter.Number9,
-            ['0'] = MorseCharacter.Number0,
+            ['0'] = MorseCharacter.Number0
         };
 
         #endregion
 
-        public override int GetHashCode()
-        {
-            return this.Signals.GetSequenceHashCode();
-        }
-
-        public override bool Equals(object obj)
-        {
-            var mc = obj as MorseCharacter;
-            return mc != null && mc.Signals.SequenceEqual(this.Signals);
-        }
+        #region For Debugging
 
         // ReSharper disable once UnusedMember.Local
         private string DebuggerDisplay => this.ToString("d");
+
+        #endregion
     }
 }

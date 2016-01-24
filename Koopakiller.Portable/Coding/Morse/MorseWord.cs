@@ -11,7 +11,7 @@ namespace Koopakiller.Coding.Morse
     [DebuggerDisplay(@"{DebuggerDisplay}")]
     public class MorseWord : IFormattable, IEnumerable<MorseCharacter>, IEnumerable<char>
     {
-        public IReadOnlyList<MorseCharacter> Characters { get; }
+        #region .ctor
 
         public MorseWord(params MorseCharacter[] chars)
         {
@@ -22,6 +22,26 @@ namespace Koopakiller.Coding.Morse
 
             this.Characters = chars;
         }
+
+        #endregion
+
+        #region Properties
+
+        public IReadOnlyList<MorseCharacter> Characters { get; }
+
+        #endregion
+
+        #region IEnumerable
+
+        public IEnumerator<MorseCharacter> GetEnumerator() => this.Characters.GetEnumerator();
+
+        IEnumerator<char> IEnumerable<char>.GetEnumerator() => this.Characters.Select(x => x.ToChar()).GetEnumerator();
+
+        IEnumerator IEnumerable.GetEnumerator() => this.GetEnumerator();
+
+        #endregion
+
+        #region Public Methods
 
         public static MorseWord Parse(string word)
         {
@@ -38,16 +58,6 @@ namespace Koopakiller.Coding.Morse
                 throw new ArgumentException($"Parameter {nameof(word)} conatins at least one illegal character.", nameof(word), ex);
             }
         }
-
-        #region IEnumerable
-
-        public IEnumerator<MorseCharacter> GetEnumerator() => this.Characters.GetEnumerator();
-
-        IEnumerator<char> IEnumerable<char>.GetEnumerator() => this.Characters.Select(x => x.ToChar()).GetEnumerator();
-
-        IEnumerator IEnumerable.GetEnumerator() => this.GetEnumerator();
-
-        #endregion
 
         public override string ToString() => this.ToString("");
 
@@ -101,7 +111,13 @@ namespace Koopakiller.Coding.Morse
             return mc != null && mc.Characters.SequenceEqual(this.Characters);
         }
 
+        #endregion
+
+        #region For Debugging
+
         // ReSharper disable once UnusedMember.Local
         private string DebuggerDisplay => this.ToString("d");
+
+        #endregion
     }
 }
