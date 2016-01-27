@@ -54,6 +54,7 @@
     <Compile Include="Coding\Morse\MorseCharacterTests.cs" />
     <Compile Include="Coding\Morse\MorseCodeTests.cs" />
     <Compile Include="Coding\Morse\MorseWordTests.cs" />
+    <Compile Include="ConsistentDayOfWeekRangeTests.cs" />
     <Compile Include="Helper\GetSequenceHashCodeHelper.cs" />
     <Compile Include="Linq\GetSequenceHashCodeExtensionTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -47,6 +47,7 @@
     <Compile Include="Coding\Morse\MorseSignal.cs" />
     <Compile Include="Coding\Morse\MorseSpace.cs" />
     <Compile Include="Coding\Morse\MorseWord.cs" />
+    <Compile Include="ConsistentDayOfWeekRange.cs" />
     <Compile Include="Linq\GetHashCode.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
