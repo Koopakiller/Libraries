@@ -49,6 +49,7 @@
     <Compile Include="Coding\Morse\MorseWord.cs" />
     <Compile Include="ConsistentDayOfWeekRange.cs" />
     <Compile Include="Linq\GetHashCode.cs" />
+    <Compile Include="Linq\RingEnumerator.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
